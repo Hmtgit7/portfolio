@@ -45,6 +45,7 @@ const About = () => {
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5, type: "tween" }}
             key={about.title + index}
+            className="app__profile-items"
           >
             <img src={about.imgUrl} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 10 }}>
