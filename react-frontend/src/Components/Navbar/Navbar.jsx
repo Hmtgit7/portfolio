@@ -17,7 +17,6 @@ const Navbar = () => {
           Hem<span>ant</span>
         </h1>
       </div>
-      <div>
         <ul className="app__navbar-links">
           {["home", "about", "work", "skills", "contact"].map((item) => (
             <li className="app__flex p-text" key={`link-${item}`}>
@@ -46,7 +45,7 @@ const Navbar = () => {
           </ul>
             </motion.div>
           )}
-        </div>
+        
       </div>
     </nav>
   );
