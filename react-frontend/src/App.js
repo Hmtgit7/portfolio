@@ -17,7 +17,6 @@ const App = () => {
       <Skills/>
       <Testimonials/>
       <Footer/>
-      <h1 style={{alignContent:'center'}}>work in progress</h1>
     </div>
   )
 }
