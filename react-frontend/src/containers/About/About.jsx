@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './About.scss'
 import { urlFor, client } from '../../client';
+import About1 from '../About1/About1';
 
 const About = () => {
   const [abouts, setAbouts] = useState([]);
@@ -21,6 +22,8 @@ const About = () => {
       <h2 className="head-text">I Know that <span>Good Design</span> <br />means  <span>Good Business</span></h2>
 
       <div className="app__profiles">
+        <About1 />
+        <h1>Services</h1> 
         {abouts.map((about, index) => (
           <motion.div
             whileInView={{ opacity: 1 }}
