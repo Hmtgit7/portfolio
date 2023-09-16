@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="app__navbar-logo">
         {/* <img src={logo} alt='logo'/> */}
         <h1>
-          Hem<span>ant</span>
+          {"</"}Hem<span>ant{">"}</span>
         </h1>
       </div>
         <ul className="app__navbar-links">
