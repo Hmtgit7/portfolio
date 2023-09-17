@@ -2,9 +2,9 @@ import React from 'react';
 
 import './App.scss'
 
-import {About,Footer,Header,Skills,Testimonials,Work,Contact } from './containers';
+import {About,Header,Skills,Testimonials,Work,Contact } from './containers';
 
-import {Navbar} from './Components';
+import {Navbar,Footer} from './Components';
 
 
 const App = () => {
