@@ -5,6 +5,7 @@ import { AppWrap, MotionWrap } from '../../Wrapper';
 import './About1.scss'
 import { images } from '../../constants';
 import { useTypewriter, Cursor } from 'react-simple-typewriter'
+import { Link } from 'react-router-dom';
 
 const About1 = () => {
 
@@ -34,7 +35,7 @@ const About1 = () => {
         Mean/Mern Stack Developer , Java Full Stack Developer
         </p>
         
-        <button>Download CV</button>
+        <a href="https://drive.google.com/file/d/1X_EORbvjou8Uf2maY5mUlphWBzpLvnZE/view?usp=sharing" target='_blank'><button>Download CV</button></a>
       </div>
 
     </div>
