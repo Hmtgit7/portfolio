@@ -2,22 +2,23 @@ import React from 'react';
 
 import './App.scss'
 
-import {About,Header,Skills,Testimonials,Work,Contact } from './containers';
+import { About, Header, Skills, Testimonials, Work, Contact, Portfolio } from './containers';
 
-import {Navbar,Footer} from './Components';
+import { Navbar, Footer } from './Components';
+import { Route, Router, Routes } from 'react-router-dom';
 
 
 const App = () => {
   return (
     <div className='app'>
-      <Navbar/>
-      <Header/>
-      <About/>
-      <Skills/>
-      <Work/>
+      <Navbar />
+      <Header />
+      <About />
+      <Skills />
+      <Work />
       {/* <Testimonials/> */}
-      <Contact/>
-      <Footer/>
+      <Contact />
+      <Footer />
     </div>
   )
 }

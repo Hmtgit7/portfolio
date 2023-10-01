@@ -99,6 +99,7 @@
   align-items: center;
   background-color: var(--secondary-color);
 
+
   svg {
     width: 70%;
     height: 70%;
@@ -116,13 +117,13 @@
 
     width: 80%;
     height: 100vh;
-
+    
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column;
-
-    background: url("../../assets/bgWhite.png");
+    
+    background: url('../../assets/bgWhite.png');
     background-color: var(--white-color);
     background-size: cover;
     background-repeat: repeat;
