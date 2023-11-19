@@ -37,8 +37,10 @@ import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
 import Profile from '../assets/Profile.JPG'
+import headerImg from '../assets/header_profile.png'
+
 
 
 export default {
     about01, about02, about03, about04, adidas, amazon, api, asus, bolt, circle, cpp, css, email, figma, flutter, git, graphql, html, javascript, logo,logo1, logo2, mobile, mu5, nb, node, profile, python, react, redux, sass, skype, spotify, typescript, vue,
-Profile}
+Profile,headerImg}
