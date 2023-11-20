@@ -24,7 +24,7 @@ const About1 = () => {
   return (
     <div className="about">
       <div className="image">
-        <img src={images.Profile} alt="" />
+        <center><img src={images.Profile} alt="" /></center>
       </div>
       <div className="content">
         <h1>Hello, I am {" "}

@@ -3,40 +3,38 @@
   width: 100%;
   flex-direction: row;
   padding: 30px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   .image {
-    flex: 1;
     width: 100%;
     height: 100%;
+    padding:20px;
+    padding-right: 20px;
 
     img {
-      width: 250px;
-      height: 270px;
+      width: 360px;
+      height: auto;
       border-radius: 50%;
     }
   }
 
   .content {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 25px;
+    padding: 20px;
+    padding-left: 20px;
 
     h1 {
       font-size: 20px;
       color: var(--secondary-color);
       word-spacing: 0.4px;
 
-
       span {
         color: var(--gray-color);
         // font-size: 20px;
-
       }
-
     }
 
     p {
@@ -53,21 +51,20 @@
       border-radius: 10px;
       border: none;
       background-color: var(--secondary-color);
-  
+
       font-weight: 500;
       color: var(--white-color);
       outline: none;
       margin: 2rem 0 0 0;
       font-family: var(--font-base);
-  
+
       transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
       cursor: pointer;
-  
+
       &:hover {
         background-color: #2430af;
       }
     }
-
   }
 
   // @media screen and (min-width: 600px) {
@@ -83,22 +80,44 @@
   //     }
   //   }
   // }
-
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1000px) {
   .about {
-    width: 200px;
     flex-direction: column;
-    flex-wrap: wrap;
-    padding: 0px;
-    gap: 10px;
-    justify-content: center;
 
     .image {
+      // padding: 0px 0px 40px 0px;
+      padding: 10px;
+
+      img{
+        width: 200px;
+        align-items: center;
+      }
+    }
+    .content {
+      // padding: 10px 0px 0px 0px;
+      padding: 10px;
+      justify-content: center;
+    }
+  }
+}
+
+/*
+@media screen and (max-width: 1000px){
+  .about {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 600px){
+  .about {
+    align-items: center ;
+    justify-content: center;
+    .image {
+      padding: 0px 0px 40px 0px;
       img {
-        width: 150px;
-        height: 150px;
+        width: 200px;
       }
     }
 
@@ -112,4 +131,4 @@
       }
     }
   }
-}
+}*/
