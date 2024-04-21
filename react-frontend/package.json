@@ -16,8 +16,10 @@
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "react-simple-typewriter": "^5.0.1",
+    "react-slick": "^0.30.2",
     "react-tooltip": "^5.16.1",
     "sass": "^1.63.3",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

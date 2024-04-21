@@ -78,14 +78,14 @@ const Header = () => (
     >
       {[images.react, images.redux, images.sass].map((circle, index) => (
         // <div className="circle-cmp app__flex" key={`circle-${index}`}>
-           <motion.div
+         <motion.div
             variants={scaleVariants}
             whileInView={scaleVariants.whileInView}
             className="circle-cmp app__flex"
             key={`circle-${index}`}
           >
-            <img src={circle} alt="profile_bg" />
-          </motion.div>
+          <img src={circle} alt="profile_bg" />
+        </motion.div>
         // </div>
       ))}
     </motion.div>
