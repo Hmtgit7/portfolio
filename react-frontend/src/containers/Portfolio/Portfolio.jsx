@@ -38,12 +38,8 @@ const Portfolio = () => {
               alt={portfolio[currentIndex].name}
             />
             <div className="app__portfolio-content">
-              <p className="p-text">{portfolio[currentIndex].feedback}</p>
-              <div>
                 <h4 className="bold-text">{portfolio[currentIndex].name}</h4>
-                {/* <h5 className="p-text">{portfolio[currentIndex].company}</h5> */}
-                <a href={portfolio[currentIndex].link}><button className="p-text">Visit</button></a>
-              </div>  
+                <a href={portfolio[currentIndex].link}><button >Visit</button></a>
             </div>
           </div>
 
