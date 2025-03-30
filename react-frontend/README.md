@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Hemant Gehlod - Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive personal portfolio website built with React.js and Sanity CMS.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+Visit the live site: [hemant-gehlod.netlify.app](https://hemant-gehlod.netlify.app/)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This portfolio website showcases my projects, skills, and professional experience in an interactive and visually appealing way. The site features a clean design with responsive layouts that work well on all devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Interactive UI**: Smooth animations and transitions enhance user experience
+- **Dynamic Content**: Projects and skills are managed through Sanity CMS
+- **Portfolio Showcase**: Interactive portfolio section with pagination
+- **Contact Form**: Easy way for visitors to get in touch
+- **Social Media Integration**: Links to all my professional profiles
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- **Frontend**: React.js, SCSS, Framer Motion
+- **Backend**: Sanity.io CMS
+- **Deployment**: Netlify
+- **Additional Libraries**: React Icons, React Router
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Sections
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Header/Hero**: Introduction and personal branding
+2. **About**: Professional background and summary
+3. **Skills**: Technical skills and competencies
+4. **Portfolio**: Showcase of key projects with filtering options
+5. **Work Experience**: Professional history and achievements
+6. **Contact**: Contact form and professional contact information
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Portfolio Section
 
-### `npm run eject`
+The Portfolio section features a responsive card-based layout that showcases my projects with:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Clean and modern card design
+- Project images with optimized loading
+- Project descriptions and links
+- Intuitive navigation between projects
+- Adaptive layout based on screen size
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup for Developers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Create a `.env` file with your Sanity credentials
+4. Run the development server:
+   ```
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contact
 
-## Learn More
+Feel free to reach out to me through any of the following channels:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Email: hmtloharcoding3579@gmail.com
+- LinkedIn: [hemant-gehlod](https://www.linkedin.com/in/hemant-gehlod)
+- GitHub: [Hmtgit7](https://github.com/Hmtgit7)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open source and available under the MIT License.
