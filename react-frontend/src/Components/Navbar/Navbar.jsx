@@ -31,7 +31,7 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div className="icons">
+      <div className="app__navbar-icons">
         <a href="https://github.com/Hmtgit7">
           <div>
             <BsGithub />
@@ -52,7 +52,7 @@ const Navbar = () => {
             <BsTwitter />
           </div>
         </a>
-        <a href='"https://youtube.com/channel/UCmAmylLKHr73VTcqJXLSMlA"'>
+        <a href="https://youtube.com/channel/UCmAmylLKHr73VTcqJXLSMlA">
           <div>
             <BsYoutube />
           </div>
@@ -76,6 +76,33 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
+            <div className="app__navbar-menu-icons">
+              <a href="https://github.com/Hmtgit7">
+                <div>
+                  <BsGithub />
+                </div>
+              </a>
+              <a href="https://www.instagram.com/hemant_gehlod/" target="blank">
+                <div>
+                  <BsInstagram />
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/hemant-gehlod">
+                <div>
+                  <BsLinkedin />
+                </div>
+              </a>
+              <a href="https://twitter.com/GehlodHemant?t=xQzzJBMs9qf1b2Pyo-OLOA&s=09">
+                <div>
+                  <BsTwitter />
+                </div>
+              </a>
+              <a href="https://youtube.com/channel/UCmAmylLKHr73VTcqJXLSMlA">
+                <div>
+                  <BsYoutube />
+                </div>
+              </a>
+            </div>
           </motion.div>
         )}
       </div>

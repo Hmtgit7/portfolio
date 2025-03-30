@@ -1,13 +1,10 @@
 .app__navbar {
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 1rem 2rem;
   background: rgba(255, 255, 255, 0.25);
-  // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -20,52 +17,46 @@
   justify-content: flex-start;
   align-items: center;
 
-  // img {
-  //   width: 90px;
-  //   height: 20px;
-
-  //   @media screen and (min-width: 2000px) {
-  //     width: 180px;
-  //     height: 40px;
-  //   }
-  // }
   h1 {
     font-family: "Poppins", sans-serif;
     font-size: 30px;
   }
+
   span {
     color: #313bac;
   }
 }
 
-.icons {
+.app__navbar-icons {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.1rem 0.5rem;
   flex-direction: row;
   gap: 8px;
-  a{
-    color: var(--brown-color);
-    div {
-        width: 30px;
-        height: 30px;
-        gap: 10px;
-        border-radius: 50%;
-        background-color: var(--white-color);
-        margin: 0.20rem 0 ;
-        border: 1px solid var(--lightGray-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s ease-in-out;
 
-        &:hover {
-            color: #fff;
-            background-color: var(--secondary-color);
-        }
+  a {
+    color: var(--brown-color);
+
+    div {
+      width: 30px;
+      height: 30px;
+      gap: 10px;
+      border-radius: 50%;
+      background-color: var(--white-color);
+      margin: 0.20rem 0;
+      border: 1px solid var(--lightGray-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: #fff;
+        background-color: var(--secondary-color);
+      }
     }
-}
+  }
 
   @media screen and (max-width: 900px) {
     display: none;
@@ -77,13 +68,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   list-style: none;
 
   li {
     margin: 0 1rem;
     cursor: pointer;
-
     flex-direction: column;
 
     div {
@@ -91,7 +80,6 @@
       height: 5px;
       background: transparent;
       border-radius: 50%;
-
       margin-bottom: 5px;
     }
 
@@ -99,10 +87,8 @@
       color: var(--gray-color);
       text-decoration: none;
       flex-direction: column;
-
       text-transform: uppercase;
       font-weight: 500;
-
       transition: all 0.3s ease-in-out;
 
       &:hover {
@@ -127,11 +113,11 @@
   height: 35px;
   border-radius: 50%;
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--secondary-color);
+  cursor: pointer;
 
   svg {
     width: 70%;
@@ -145,23 +131,16 @@
     bottom: 0;
     right: 0;
     z-index: 5;
-
     padding: 1rem;
-
     width: 80%;
     height: 100vh;
-
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-direction: column;
-
-    background: url("../../assets/bgWhite.png");
     background-color: var(--white-color);
     background-size: cover;
     background-repeat: repeat;
-
-    /* top box shadow */
     box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.15);
 
     svg {
@@ -169,6 +148,7 @@
       height: 35px;
       color: var(--secondary-color);
       margin: 0.5rem 1rem;
+      cursor: pointer;
     }
 
     ul {
@@ -177,7 +157,6 @@
       padding: 0;
       height: 100%;
       width: 100%;
-
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
@@ -192,7 +171,6 @@
           font-size: 1rem;
           text-transform: uppercase;
           font-weight: 500;
-
           transition: all 0.3s ease-in-out;
 
           &:hover {
@@ -201,9 +179,49 @@
         }
       }
     }
+  }
 
-    @media screen and (min-width: 900px) {
-      display: none;
+  .app__navbar-menu-icons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    flex-direction: row;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    a {
+      color: var(--brown-color);
+
+      div {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: var(--white-color);
+        border: 1px solid var(--lightGray-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        box-shadow: none;
+        padding: 0;
+
+        svg {
+          width: 15px;
+          height: 15px;
+          color: var(--gray-color);
+          margin: 0;
+        }
+
+        &:hover {
+          background-color: var(--secondary-color);
+
+          svg {
+            color: #fff;
+          }
+        }
+      }
     }
   }
 
