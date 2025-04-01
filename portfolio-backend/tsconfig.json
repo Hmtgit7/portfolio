@@ -1,17 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "NodeNext", 
-    "moduleResolution": "NodeNext",
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "execMap": {
-    "ts": "node --loader ts-node/esm"
   },
   "include": [
     "src/**/*"
