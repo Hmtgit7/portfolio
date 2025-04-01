@@ -6,3 +6,4 @@ export {default as Testimonials } from './Testimonials/Testimonials';
 export {default as Work } from './Work/Work';
 export {default as About1} from './About1/About1'
 export {default as Portfolio} from './Portfolio/Portfolio'
+export {default as Github} from './GitHub/GitHub'
