@@ -1,0 +1,242 @@
+.app__projects {
+    width: 100%;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 450px) {
+        padding: 4rem 1rem;
+    }
+}
+
+.app__projects-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+
+    .app__projects-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        color: var(--gray-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        svg {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        &:hover {
+            color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    p {
+        max-width: 600px;
+        text-align: center;
+    }
+}
+
+.app__projects-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem 0 3rem;
+
+    .app__projects-filter-item {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: var(--black-color);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+
+        &.item-active {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+    }
+}
+
+.app__projects-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 300px;
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        border: 5px solid var(--secondary-color);
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        margin-bottom: 1rem;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    p {
+        color: var(--gray-color);
+        font-size: 1rem;
+    }
+}
+
+.app__projects-portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.app__projects-item {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.app__projects-img {
+    width: 100%;
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.app__projects-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    div {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: var(--secondary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        svg {
+            width: 50%;
+            height: 50%;
+        }
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+    }
+}
+
+.app__projects-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--black-color);
+        margin-bottom: 0.75rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        color: var(--gray-color);
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+}
+
+.app__projects-tag {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+
+    .p-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        background-color: var(--primary-color);
+        border-radius: 10px;
+        color: var(--secondary-color);
+        margin: 0;
+    }
+}

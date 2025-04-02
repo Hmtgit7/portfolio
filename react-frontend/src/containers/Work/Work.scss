@@ -141,7 +141,6 @@
     line-height: 1.5;
   }
 
-
   .app__work-tag {
     position: absolute;
 
@@ -153,23 +152,40 @@
 }
 
 .app__work-button {
-  button {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+
+  .view-all-projects-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 1rem 2rem;
     border-radius: 10px;
     border: none;
     background-color: var(--secondary-color);
-
-    font-weight: 500;
     color: var(--white-color);
-    outline: none;
-    margin: 2rem 0 0 0;
-    font-family: var(--font-base);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
 
-    transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    cursor: pointer;
+    span {
+      margin-right: 0.75rem;
+    }
+
+    svg {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
 
     &:hover {
       background-color: #2430af;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+      svg {
+        transform: translateX(5px);
+      }
     }
   }
 }

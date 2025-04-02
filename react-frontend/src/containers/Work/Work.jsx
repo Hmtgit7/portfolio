@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { BsFillArrowRightSquareFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import { urlFor, client } from '../../client';
 import './Work.scss';
-import { BsFillArrowRightSquareFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-
 
 const Work = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
-  const [activeFilter, setActiveFilter] = useState('web app');
+  const [activeFilter, setActiveFilter] = useState('Web App');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
   useEffect(() => {
@@ -60,7 +59,7 @@ const Work = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="app__work-portfolio"
       >
-        {filterWork.map((work, index) => (
+        {filterWork.slice(0, 3).map((work, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div
               className="app__work-img app__flex"
@@ -73,7 +72,6 @@ const Work = () => {
                 className="app__work-hover app__flex"
               >
                 <a href={work.projectLink} target="_blank" rel="noreferrer">
-
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
                     whileHover={{ scale: [1, 0.90] }}
@@ -109,18 +107,21 @@ const Work = () => {
       </motion.div>
       <motion.div
         whileInView={{ scale: [0, 1] }}
-        whileHover={{ scale: [1, 0.90] }}
+        whileHover={{ scale: [1, 0.95] }}
         transition={{ duration: 0.25 }}
         className="app__work-button"
       >
-        <Link to='/work'><button>Show All <BsFillArrowRightSquareFill /></button></Link>
+        <Link to='/projects' className="view-all-projects-btn">
+          <span>View All Projects</span>
+          <BsFillArrowRightSquareFill />
+        </Link>
       </motion.div>
     </>
   );
 };
-// export default AppWrap(
-//   MotionWrap(Work, 'app__work'),
-//   'work',
-//   'app__whitebg',
-// );
-export default AppWrap(Work, 'work')
+
+export default AppWrap(
+  MotionWrap(Work, 'app__works'),
+  'work',
+  'app__primarybg',
+);
