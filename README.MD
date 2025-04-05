@@ -1,4 +1,4 @@
-# Hemant Gehlod's Portfolio
+# Portfolio
 
 A full-stack portfolio website showcasing my projects, skills, and professional experience. The application features a modern, responsive design with smooth animations and integration with GitHub for automatic project synchronization.
 
