@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
-import { motion } from "framer-motion";
 import {
   BsTwitter,
   BsInstagram,
@@ -8,104 +7,103 @@ import {
   BsYoutube,
   BsLinkedin,
 } from "react-icons/bs";
-
-// import { images } from '../../constants';
 import "./Navbar.scss";
 
+const NAV_LINKS = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Work", href: "#work" },
+  { label: "Contact", href: "#contact" },
+];
+
+const SOCIAL_LINKS = [
+  { href: "https://github.com/Hmtgit7", icon: <BsGithub aria-label="GitHub" /> },
+  { href: "https://www.instagram.com/hemant_gehlod/", icon: <BsInstagram aria-label="Instagram" /> },
+  { href: "https://www.linkedin.com/in/hemant-gehlod", icon: <BsLinkedin aria-label="LinkedIn" /> },
+  { href: "https://twitter.com/GehlodHemant?t=xQzzJBMs9qf1b2Pyo-OLOA&s=09", icon: <BsTwitter aria-label="Twitter" /> },
+  { href: "https://youtube.com/channel/UCmAmylLKHr73VTcqJXLSMlA", icon: <BsYoutube aria-label="YouTube" /> },
+];
+
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Prevent background scroll when menu is open
+  React.useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
-    <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        {/* <img src={images.logo} alt="logo" /> */}
-        <h1>
-          {"</"}Hem<span>ant{">"}</span>
-        </h1>
+    <nav className="navbar">
+      <div className="navbar__logo">
+        <h1>{"</"}Hem<span>ant{" >"}</span></h1>
       </div>
-      <ul className="app__navbar-links">
-        {["home", "about", "skills", "work", "contact"].map((item) => (
-          <li className="app__flex p-text" key={`link-${item}`}>
-            <div />
-            <a href={`#${item}`}>{item}</a>
+      <ul className="navbar__links">
+        {NAV_LINKS.map((item) => (
+          <li key={item.href}>
+            <a href={item.href}>{item.label}</a>
           </li>
         ))}
       </ul>
-      <div className="app__navbar-icons">
-        <a href="https://github.com/Hmtgit7">
-          <div>
-            <BsGithub />
-          </div>
-        </a>
-        <a href="https://www.instagram.com/hemant_gehlod/" target="blank">
-          <div>
-            <BsInstagram />
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/hemant-gehlod">
-          <div>
-            <BsLinkedin />
-          </div>
-        </a>
-        <a href="https://twitter.com/GehlodHemant?t=xQzzJBMs9qf1b2Pyo-OLOA&s=09">
-          <div>
-            <BsTwitter />
-          </div>
-        </a>
-        <a href="https://youtube.com/channel/UCmAmylLKHr73VTcqJXLSMlA">
-          <div>
-            <BsYoutube />
-          </div>
-        </a>
+      <div className="navbar__social">
+        {SOCIAL_LINKS.map((item, idx) => (
+          <a href={item.href} key={idx} target="_blank" rel="noopener noreferrer">
+            <div>{item.icon}</div>
+          </a>
+        ))}
       </div>
-      <div className="app__navbar-menu">
-        <HiMenuAlt4 onClick={() => setToggle(true)} />
-
-        {toggle && (
-          <motion.div
-            whileInView={{ x: [300, 0] }}
-            transition={{ duration: 0.85, ease: "easeOut" }}
-          >
-            <HiX onClick={() => setToggle(false)} />
+      <button
+        className="navbar__menu-btn"
+        aria-label="Open menu"
+        onClick={() => setMenuOpen(true)}
+      >
+        <HiMenuAlt4 />
+      </button>
+      {menuOpen && (
+        <>
+          <div
+            className="navbar__overlay"
+            onClick={() => setMenuOpen(false)}
+            tabIndex={-1}
+            aria-label="Close menu overlay"
+          />
+          <aside className="navbar__mobile-menu" aria-modal="true" role="dialog">
+            <button
+              className="navbar__close-btn"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              <HiX />
+            </button>
             <ul>
-              {["home", "about", "skills", "work", "contact"].map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)}>
-                    {item}
+              {NAV_LINKS.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="app__navbar-menu-icons">
-              <a href="https://github.com/Hmtgit7">
-                <div>
-                  <BsGithub />
-                </div>
-              </a>
-              <a href="https://www.instagram.com/hemant_gehlod/" target="blank">
-                <div>
-                  <BsInstagram />
-                </div>
-              </a>
-              <a href="https://www.linkedin.com/in/hemant-gehlod">
-                <div>
-                  <BsLinkedin />
-                </div>
-              </a>
-              <a href="https://twitter.com/GehlodHemant?t=xQzzJBMs9qf1b2Pyo-OLOA&s=09">
-                <div>
-                  <BsTwitter />
-                </div>
-              </a>
-              <a href="https://youtube.com/channel/UCmAmylLKHr73VTcqJXLSMlA">
-                <div>
-                  <BsYoutube />
-                </div>
-              </a>
+            <div className="navbar__mobile-social">
+              {SOCIAL_LINKS.map((item, idx) => (
+                <a href={item.href} key={idx} target="_blank" rel="noopener noreferrer">
+                  <div>{item.icon}</div>
+                </a>
+              ))}
             </div>
-          </motion.div>
-        )}
-      </div>
+          </aside>
+        </>
+      )}
     </nav>
   );
 };
