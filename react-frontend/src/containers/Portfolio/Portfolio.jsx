@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 import { AppWrap, MotionWrap } from "../../Wrapper";
@@ -8,64 +8,95 @@ import "./Portfolio.scss";
 
 const Portfolio = () => {
   const [portfolio, setPortfolio] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-
-  // Determine items per page based on screen size
-  const itemsPerPage = isMobile ? 1 : 3;
+  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
   useEffect(() => {
-    // Check if on mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Initial check
     checkMobile();
-
-    // Add resize listener
     window.addEventListener('resize', checkMobile);
-
-    // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
     const query = '*[_type == "portfolio"]';
-
     client.fetch(query).then((data) => {
       setPortfolio(data);
     });
   }, []);
 
-  // Reset current page when switching between mobile and desktop
-  useEffect(() => {
-    setCurrentPage(0);
-  }, [isMobile]);
-
   const handlePrev = () => {
-    setCurrentPage((prev) => {
-      if (prev === 0) return Math.ceil(portfolio.length / itemsPerPage) - 1;
-      return prev - 1;
-    });
+    if (portfolio.length === 0) return;
+    setDirection(-1);
+    setCurrentIndex((prev) => 
+      prev === 0 ? portfolio.length - 1 : prev - 1
+    );
   };
 
   const handleNext = () => {
-    setCurrentPage((prev) => {
-      if (prev === Math.ceil(portfolio.length / itemsPerPage) - 1) return 0;
-      return prev + 1;
-    });
+    if (portfolio.length === 0) return;
+    setDirection(1);
+    setCurrentIndex((prev) => 
+      prev === portfolio.length - 1 ? 0 : prev + 1
+    );
   };
 
-  // Get current page items
-  const getCurrentItems = () => {
-    if (portfolio.length <= itemsPerPage) {
-      return portfolio;
+  const getVisibleItems = () => {
+    if (portfolio.length === 0) return [];
+    
+    if (isMobile) {
+      return [{ ...portfolio[currentIndex], position: 0, key: `mobile-${currentIndex}` }];
+    }
+    
+    if (portfolio.length === 1) {
+      return [{ ...portfolio[0], position: 0, key: 'single-0' }];
+    }
+    
+    if (portfolio.length === 2) {
+      return [
+        { ...portfolio[currentIndex], position: 0, key: `dual-${currentIndex}-center` },
+        { ...portfolio[(currentIndex + 1) % portfolio.length], position: 1, key: `dual-${(currentIndex + 1) % portfolio.length}-right` }
+      ];
     }
 
-    const start = currentPage * itemsPerPage;
-    const end = start + itemsPerPage;
-    return portfolio.slice(start, end);
+    // For 3 or more items
+    const items = [];
+    for (let i = -1; i <= 1; i++) {
+      const index = (currentIndex + i + portfolio.length) % portfolio.length;
+      items.push({
+        ...portfolio[index],
+        position: i,
+        originalIndex: index,
+        key: `item-${index}-pos-${i}`
+      });
+    }
+    return items;
+  };
+
+  const goToSlide = (index) => {
+    const diff = index - currentIndex;
+    setDirection(diff > 0 ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  // Simple slide variants for natural swiping
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 1
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 300 : -300,
+      opacity: 1
+    })
   };
 
   return (
@@ -74,59 +105,174 @@ const Portfolio = () => {
 
       {portfolio.length > 0 && (
         <div className="app__portfolio-container">
-          <div className="app__portfolio-items">
-            {getCurrentItems().map((item) => (
-              <motion.div
-                whileInView={{ opacity: 1 }}
-                whileHover={{ scale: isMobile ? 1.01 : 1.03 }}
-                transition={{ duration: 0.3, type: 'tween' }}
-                className="app__portfolio-item"
-                key={item._id || `portfolio-${item.name}`}
-              >
-                <div className="app__portfolio-img">
-                  <img src={urlFor(item.imgurl)} alt={item.name} />
-                </div>
-                <h4 className="bold-text">{item.name}</h4>
-                <p className="p-text">
-                  {item.description || 'A creative portfolio project showcasing my skills.'}
-                </p>
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                  <button>Visit</button>
-                </a>
-              </motion.div>
-            ))}
-          </div>
-
-          {portfolio.length > itemsPerPage && (
-            <div className="app__portfolio-pagination">
+          <div className="app__portfolio-carousel">
+            {/* Navigation Arrow - Left */}
+            {!isMobile && portfolio.length > 1 && (
               <button
-                className="app__portfolio-arrow"
+                className="app__portfolio-arrow left"
                 onClick={handlePrev}
-                aria-label="Previous page"
+                aria-label="Previous item"
               >
                 <HiChevronLeft />
               </button>
+            )}
 
-              <div className="app__portfolio-dots">
-                {Array.from({ length: Math.ceil(portfolio.length / itemsPerPage) }).map((_, index) => (
-                  <div
-                    key={`dot-${index}`}
-                    className={`app__portfolio-dot ${currentPage === index ? 'active' : ''}`}
-                    onClick={() => setCurrentPage(index)}
-                    role="button"
-                    aria-label={`Page ${index + 1}`}
-                    tabIndex={0}
-                  />
-                ))}
-              </div>
+            {/* Portfolio Items */}
+            <div className="app__portfolio-items">
+              {isMobile ? (
+                // Mobile: Simple horizontal slide
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeInOut"
+                    }}
+                    className="app__portfolio-item mobile-item"
+                  >
+                    <div className="app__portfolio-img">
+                      <img src={urlFor(portfolio[currentIndex].imgurl)} alt={portfolio[currentIndex].name} />
+                    </div>
+                    
+                    <div className="app__portfolio-content">
+                      <h4 className="bold-text">{portfolio[currentIndex].name}</h4>
+                      <p className="p-text">
+                        {portfolio[currentIndex].description || 'A creative portfolio project showcasing my skills.'}
+                      </p>
+                      <a href={portfolio[currentIndex].link} target="_blank" rel="noopener noreferrer">
+                        <button className="app__portfolio-btn">Visit Project</button>
+                      </a>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              ) : (
+                // Desktop: Center item slides, side items are static
+                <>
+                  {getVisibleItems().map((item) => {
+                    if (item.position === 0) {
+                      // Center item with simple slide
+                      return (
+                        <AnimatePresence mode="wait" key="center-item" custom={direction}>
+                          <motion.div
+                            key={item.key}
+                            custom={direction}
+                            variants={slideVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{
+                              duration: 0.3,
+                              ease: "easeInOut"
+                            }}
+                            className="app__portfolio-item center-item"
+                            whileHover={{ 
+                              scale: 1.05,
+                              y: -5,
+                              transition: { duration: 0.2 }
+                            }}
+                          >
+                            <div className="app__portfolio-img">
+                              <img src={urlFor(item.imgurl)} alt={item.name} />
+                            </div>
+                            
+                            <div className="app__portfolio-content">
+                              <h4 className="bold-text">{item.name}</h4>
+                              <p className="p-text">
+                                {item.description || 'A creative portfolio project showcasing my skills.'}
+                              </p>
+                              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                                <button className="app__portfolio-btn">Visit Project</button>
+                              </a>
+                            </div>
+                          </motion.div>
+                        </AnimatePresence>
+                      );
+                    } else {
+                      // Side items remain static
+                      return (
+                        <motion.div
+                          key={item.key}
+                          initial={{
+                            x: item.position === -1 ? -350 : 350,
+                            opacity: 0.4,
+                            scale: 0.85
+                          }}
+                          animate={{
+                            x: item.position === -1 ? -350 : 350,
+                            opacity: 0.4,
+                            scale: 0.85
+                          }}
+                          className={`app__portfolio-item ${item.position === -1 ? 'left-item' : 'right-item'}`}
+                        >
+                          <div className="app__portfolio-img">
+                            <img src={urlFor(item.imgurl)} alt={item.name} />
+                          </div>
+                          
+                          <div className="app__portfolio-content">
+                            <h4 className="bold-text">{item.name}</h4>
+                            <p className="p-text">
+                              {item.description || 'A creative portfolio project showcasing my skills.'}
+                            </p>
+                            <a href={item.link} target="_blank" rel="noopener noreferrer">
+                              <button className="app__portfolio-btn">Visit Profile</button>
+                            </a>
+                          </div>
+                        </motion.div>
+                      );
+                    }
+                  })}
+                </>
+              )}
+            </div>
 
+            {/* Navigation Arrow - Right */}
+            {!isMobile && portfolio.length > 1 && (
               <button
-                className="app__portfolio-arrow"
+                className="app__portfolio-arrow right"
                 onClick={handleNext}
-                aria-label="Next page"
+                aria-label="Next item"
               >
                 <HiChevronRight />
               </button>
+            )}
+
+            {/* Mobile Navigation */}
+            {isMobile && portfolio.length > 1 && (
+              <div className="app__portfolio-mobile-nav">
+                <button
+                  className="app__portfolio-arrow"
+                  onClick={handlePrev}
+                  aria-label="Previous item"
+                >
+                  <HiChevronLeft />
+                </button>
+                <button
+                  className="app__portfolio-arrow"
+                  onClick={handleNext}
+                  aria-label="Next item"
+                >
+                  <HiChevronRight />
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Dots Indicator */}
+          {portfolio.length > 1 && (
+            <div className="app__portfolio-dots">
+              {portfolio.map((_, index) => (
+                <button
+                  key={`dot-${index}`}
+                  className={`app__portfolio-dot ${currentIndex === index ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to item ${index + 1}`}
+                />
+              ))}
             </div>
           )}
         </div>
