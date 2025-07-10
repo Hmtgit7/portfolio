@@ -235,7 +235,7 @@ const GitHub = () => {
                 </div>
             )}
 
-            {stats && (
+            {/* {stats && (
                 <div className="app__github-languages">
                     <h3>Language Distribution</h3>
                     <div className="app__github-languages-chart">
@@ -268,9 +268,9 @@ const GitHub = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
 
-            <div className="app__github-repos">
+            {/* <div className="app__github-repos">
                 <h3>My Repositories</h3>
 
                 <div className="app__github-filter">
@@ -352,7 +352,7 @@ const GitHub = () => {
                         View All Repositories
                     </a>
                 </div>
-            </div>
+            </div> */}
 
             <div className="app__github-contributions">
                 <h3>Contribution Graph</h3>
@@ -417,5 +417,5 @@ const formatDate = (dateString) => {
 export default AppWrap(
     MotionWrap(GitHub, 'app__github'),
     'github',
-    'app__whitebg'
+    'app__primarybg'
 );

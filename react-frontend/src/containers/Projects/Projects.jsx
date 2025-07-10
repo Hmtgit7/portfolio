@@ -5,6 +5,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { client } from '../../client';
 import './Projects.scss';
+import { AppWrap, MotionWrap } from '../../Wrapper';
 
 const Projects = () => {
     const [works, setWorks] = useState([]);
@@ -310,4 +311,8 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default AppWrap(
+  MotionWrap(Projects, 'app__projects'),
+  'projects',
+  'app__primarybg'
+);

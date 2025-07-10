@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Footer } from './Components';
-import { About, Header, Skills, Work, Contact, Portfolio, Github, About1 } from './containers';
+import { About, Header, Skills, Work, Contact, Portfolio, Github, About1, Experience, Education, CombinedTimeline } from './containers';
 
 const HomePage = () => {
     return (
@@ -10,8 +10,9 @@ const HomePage = () => {
             <About />
             {/* <About1 /> */}
             <Portfolio />
-            <Skills />
+            <CombinedTimeline />
             <Work />
+            <Skills />
             <Github />
             <Contact />
             <Footer />

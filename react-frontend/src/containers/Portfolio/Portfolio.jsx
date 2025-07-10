@@ -283,6 +283,6 @@ const Portfolio = () => {
 
 export default AppWrap(
   MotionWrap(Portfolio, "app__portfolio"),
-  "Portfolio",
+  "portfolio",
   "app__primarybg"
 );

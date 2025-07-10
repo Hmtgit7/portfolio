@@ -7,3 +7,6 @@ export {default as Work } from './Work/Work';
 export {default as About1} from './About1/About1'
 export {default as Portfolio} from './Portfolio/Portfolio'
 export {default as Github} from './GitHub/GitHub'
+export {default as Education} from './Education/Education'
+export { default as Experience } from './Experience/Experience';
+export { default as CombinedTimeline } from './CombinedTimeline';
