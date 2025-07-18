@@ -12,8 +12,11 @@ import "./Navbar.scss";
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  // { label: "Portfolio", href: "#portfolio" },
+  { label: "Timeline", href: "#combined-timeline" },
   { label: "Work", href: "#work" },
+  { label: "Skills", href: "#skills" },
+  // { label: "GitHub", href: "#github" },
   { label: "Contact", href: "#contact" },
 ];
 
