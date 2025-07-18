@@ -107,11 +107,12 @@ const Portfolio = () => {
         <div className="app__portfolio-container">
           <div className="app__portfolio-carousel">
             {/* Navigation Arrow - Left */}
-            {!isMobile && portfolio.length > 1 && (
+            {portfolio.length > 1 && (
               <button
-                className="app__portfolio-arrow left"
+                className={`app__portfolio-arrow left${isMobile ? ' mobile' : ''}`}
                 onClick={handlePrev}
                 aria-label="Previous item"
+                style={isMobile ? { display: 'block' } : {}}
               >
                 <HiChevronLeft />
               </button>
@@ -231,35 +232,19 @@ const Portfolio = () => {
             </div>
 
             {/* Navigation Arrow - Right */}
-            {!isMobile && portfolio.length > 1 && (
+            {portfolio.length > 1 && (
               <button
-                className="app__portfolio-arrow right"
+                className={`app__portfolio-arrow right${isMobile ? ' mobile' : ''}`}
                 onClick={handleNext}
                 aria-label="Next item"
+                style={isMobile ? { display: 'block' } : {}}
               >
                 <HiChevronRight />
               </button>
             )}
 
             {/* Mobile Navigation */}
-            {isMobile && portfolio.length > 1 && (
-              <div className="app__portfolio-mobile-nav">
-                <button
-                  className="app__portfolio-arrow"
-                  onClick={handlePrev}
-                  aria-label="Previous item"
-                >
-                  <HiChevronLeft />
-                </button>
-                <button
-                  className="app__portfolio-arrow"
-                  onClick={handleNext}
-                  aria-label="Next item"
-                >
-                  <HiChevronRight />
-                </button>
-              </div>
-            )}
+            {/* Removed .app__portfolio-mobile-nav for mobile arrows, now handled above */}
           </div>
 
           {/* Dots Indicator */}

@@ -384,3 +384,21 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .app__portfolio-arrow.left.mobile {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+  }
+  .app__portfolio-arrow.right.mobile {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+  }
+  .app__portfolio-mobile-nav {
+    display: none !important;
+  }
+}
