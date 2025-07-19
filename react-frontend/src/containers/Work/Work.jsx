@@ -36,7 +36,7 @@ const Work = () => {
       <h3 className="featured-projects-heading">Featured Projects</h3>
 
       <div className="app__work-filter">
-        {[ 'MERN', 'Python', 'Java', 'Next JS', 'Shopify App'].map((item, index) => (
+        {[ 'React JS', 'MERN', 'Java', 'Next JS', 'Shopify App','Python'].map((item, index) => (
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}

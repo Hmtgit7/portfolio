@@ -7,6 +7,9 @@ import employeeManagement from '../assets/projects/employee-management.png';
 import bitly from '../assets/projects/bitly-clone.png';
 import realtimeSpotify from '../assets/projects/spotify-clone.png';
 import threadsClone from '../assets/projects/threads-clone.png';
+import movieFlixer from '../assets/projects/movie-flixer.png';
+import homeNavPro from '../assets/projects/homeNavPro.png'
+import spotify from '../assets/projects/spotify.png'
 
 
 export default {
@@ -18,5 +21,8 @@ export default {
     employeeManagement,
     bitly,
     realtimeSpotify,
-    threadsClone
+    threadsClone,
+    movieFlixer,
+    homeNavPro,
+    spotify
 }

@@ -65,9 +65,33 @@ const works = [
     codeLink: 'https://github.com/Hmtgit7/bitly-clone',
     imgUrl: projectsImg.bitly,
     tags: ['Java']
+  },
+  {
+    title: 'Movie Flixer',
+    description: 'Movie Flixer is a platform that allows you to watch movies online',
+    projectLink: 'https://movie-flixer.netlify.app/',
+    codeLink: 'https://github.com/Hmtgit7/movieflixer',
+    imgUrl: projectsImg.movieFlixer,
+    tags: ['React JS']
+  },
+  {
+    title: 'HomeNavPro: A Ecommerce Template',
+    description: 'Ecommerce React App Template',
+    projectLink: 'https://homenav-pro.netlify.app/',
+    codeLink: 'https://github.com/Hmtgit7/HomeNav-PRO',
+    imgUrl: projectsImg.homeNavPro,
+    tags: ['React JS']
+  },
+  {
+    title: 'Spotify Clone',
+    description: 'Spotify Clone Using React JS And Spofiy API And SDK',
+    projectLink: 'https://mymusicapp-phi.vercel.app/',
+    codeLink: 'https://github.com/Hmtgit7/mymusicapp',
+    imgUrl: projectsImg.spotify,
+    tags: ['React JS']
   }
 ];
 
-export default works; 
+export default works;
 
 // 'Web App', 'MERN', 'MEAN', 'Java', 'React JS', 'Shopify App'
