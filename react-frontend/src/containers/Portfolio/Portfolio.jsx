@@ -146,7 +146,7 @@ const Portfolio = () => {
                         {portfolio[currentIndex].description || 'A creative portfolio project showcasing my skills.'}
                       </p>
                       <a href={portfolio[currentIndex].link} target="_blank" rel="noopener noreferrer">
-                        <button className="app__portfolio-btn">Visit Project</button>
+                        <button className="app__portfolio-btn">Visit Profile</button>
                       </a>
                     </div>
                   </motion.div>
@@ -187,7 +187,7 @@ const Portfolio = () => {
                                 {item.description || 'A creative portfolio project showcasing my skills.'}
                               </p>
                               <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                <button className="app__portfolio-btn">Visit Project</button>
+                                <button className="app__portfolio-btn">Visit Profile</button>
                               </a>
                             </div>
                           </motion.div>
