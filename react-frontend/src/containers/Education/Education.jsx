@@ -4,12 +4,26 @@ import { AppWrap } from '../../Wrapper';
 import './Education.scss';
 
 const educationData = [
+ 
   {
     dates: '2020 – 2024',
     degree: "Bachelor's of Technology in Computer Science and Engineering",
     school: 'Acropolis Institute of Technology and Research, Indore',
     description: 'CGPA: 7.57. Relevant coursework: Data Structures, Algorithms, Web Development, Cloud Computing.'
   },
+  {
+    dates: '2018 – 2019',
+    degree: '12th Grade',
+    school: 'Paramount Academy Sitamau, Mandsaur',
+    description: 'GPA: 6.5'
+  },
+  {
+    dates: '2016 – 2017',
+    degree: '10th Grade',
+    school: 'Paramount Academy Sitamau, Mandsaur',
+    description: 'GPA: 7.2'
+  },
+  
   // Add more education entries as needed
 ];
 
