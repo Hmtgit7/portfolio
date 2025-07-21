@@ -22,16 +22,20 @@ const Projects = () => {
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
-    setCurrentPage(1); // Reset to first page when switching categories
     setAnimateCard({ y: 100, opacity: 0 });
 
     setTimeout(() => {
-      setAnimateCard({ y: 0, opacity: 1 });
+      let filteredData;
       if (item === 'All') {
-        setFilterWork(workData);
+        filteredData = workData;
       } else {
-        setFilterWork(workData.filter((work) => work.tags.includes(item)));
+        filteredData = workData.filter((work) => work.tags.includes(item));
       }
+      
+      setFilterWork(filteredData);
+      // Reset to page 1 after filtering
+      setCurrentPage(1);
+      setAnimateCard({ y: 0, opacity: 1 });
     }, 500);
   };
 
@@ -53,14 +57,28 @@ const Projects = () => {
   const endIndex = startIndex + projectsPerPage;
   const currentProjects = filterWork.slice(startIndex, endIndex);
 
+  // Ensure current page is valid when filterWork changes
+  useEffect(() => {
+    const maxPages = Math.ceil(filterWork.length / projectsPerPage);
+    if (currentPage > maxPages && maxPages > 0) {
+      setCurrentPage(1);
+    }
+  }, [filterWork.length, currentPage, projectsPerPage]);
+
   const handlePageChange = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
+    if (pageNumber >= 1 && pageNumber <= totalPages && pageNumber !== currentPage) {
       setCurrentPage(pageNumber);
       setAnimateCard({ y: 100, opacity: 0 });
       
       setTimeout(() => {
         setAnimateCard({ y: 0, opacity: 1 });
       }, 300);
+      
+      // Scroll to top of projects section for better UX
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
@@ -68,12 +86,14 @@ const Projects = () => {
     const pages = [];
     const showPages = 5; // Show 5 page numbers at most
     
+    if (totalPages <= 1) return pages; // No pagination if only 1 or 0 pages
+    
     if (totalPages <= showPages) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      const startPage = Math.max(1, currentPage - 2);
+      const startPage = Math.max(1, Math.min(currentPage - 2, totalPages - showPages + 1));
       const endPage = Math.min(totalPages, startPage + showPages - 1);
       
       for (let i = startPage; i <= endPage; i++) {
@@ -123,11 +143,14 @@ const Projects = () => {
             </div>
 
             {/* Projects count info */}
-            <div className="app__projects-info">
-              <p className="p-text">
-                Showing {Math.min(startIndex + 1, filterWork.length)}-{Math.min(endIndex, filterWork.length)} of {filterWork.length} projects
-              </p>
-            </div>
+            {filterWork.length > 0 && (
+              <div className="app__projects-info">
+                <p className="p-text">
+                  Showing {Math.min(startIndex + 1, filterWork.length)}-{Math.min(endIndex, filterWork.length)} of {filterWork.length} projects
+                  {activeFilter !== 'All' && ` in ${activeFilter}`}
+                </p>
+              </div>
+            )}
 
             <motion.div
               animate={animateCard}
@@ -135,8 +158,8 @@ const Projects = () => {
               className="app__projects-portfolio"
             >
               {currentProjects.length > 0 ? (
-                currentProjects.map((work) => (
-                  <div className="app__projects-item app__flex" key={work.id || work.title}>
+                currentProjects.map((work, index) => (
+                  <div className="app__projects-item app__flex" key={`${work.id || work.title}-${index}-page-${currentPage}`}>
                     <div className="app__projects-img app__flex">
                       <img src={work.imgUrl} alt={work.title} />
 
@@ -178,7 +201,7 @@ const Projects = () => {
 
                       <div className="app__projects-tags app__flex">
                         {work.tags && work.tags.map((tag, tagIndex) => (
-                          <div key={tagIndex} className="app__projects-tag app__flex">
+                          <div key={`${tag}-${tagIndex}`} className="app__projects-tag app__flex">
                             <p className="p-text">{tag}</p>
                           </div>
                         ))}
@@ -187,7 +210,9 @@ const Projects = () => {
                   </div>
                 ))
               ) : (
-                <p className="p-text">No projects found.</p>
+                <div className="app__projects-empty">
+                  <p className="p-text">No projects found for the selected category.</p>
+                </div>
               )}
             </motion.div>
 
