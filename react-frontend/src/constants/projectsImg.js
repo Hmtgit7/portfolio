@@ -10,6 +10,7 @@ import threadsClone from '../assets/projects/threads-clone.png';
 import movieFlixer from '../assets/projects/movie-flixer.png';
 import homeNavPro from '../assets/projects/homeNavPro.png'
 import spotify from '../assets/projects/spotify.png'
+import healthTracker from '../assets/projects/health-tracker.png'
 
 
 export default {
@@ -24,5 +25,5 @@ export default {
     threadsClone,
     movieFlixer,
     homeNavPro,
-    spotify
+    healthTracker
 }

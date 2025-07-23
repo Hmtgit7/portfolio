@@ -51,6 +51,14 @@ const works = [
     tags: ['Next JS']
   },
   {
+    title: 'Health Tracker',
+    description: 'Health Tracker is a platform that allows you to track your health',
+    projectLink: 'https://health-tracker-six-beige.vercel.app/',
+    codeLink: 'https://github.com/Hmtgit7/health-tracker',
+    imgUrl: projectsImg.healthTracker,
+    tags: ['Next JS']
+  },
+  {
     title: 'Employee Management System',
     description: 'Employee Management System is a platform that allows you to manage your employees',
     projectLink: 'https://employee-management-steel-phi.vercel.app/',
