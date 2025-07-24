@@ -51,6 +51,14 @@ const works = [
     tags: ['Next JS']
   },
   {
+    title: 'AI Career Coach',
+    description: 'AI Career Coach is a platform that allows you to get career advice from AI',
+    projectLink: 'https://ai-career-coach-navy.vercel.app',
+    codeLink: 'https://github.com/Hmtgit7/ai-career-coach',
+    imgUrl: projectsImg.aiCareerCoach,
+    tags: ['Next JS']
+  },
+  {
     title: 'Health Tracker',
     description: 'Health Tracker is a platform that allows you to track your health',
     projectLink: 'https://health-tracker-six-beige.vercel.app/',
