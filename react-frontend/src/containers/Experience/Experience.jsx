@@ -8,7 +8,7 @@ const experiences = [
     company: 'Ablespace',
     location: 'Delhi, India',
     role: 'Full Stack Developer',
-    dates: 'Jul 2024 – Present',
+    dates: 'Jul 2025 – Present',
     skills: ['Next.js', 'Nest.js', 'Node', 'React', 'PostgreSQL', 'AWS'],
     contributions: [
       'Developing HIPAA and FERPA-compliant web applications and management platform serving 10,000+ professionals across school districts',
