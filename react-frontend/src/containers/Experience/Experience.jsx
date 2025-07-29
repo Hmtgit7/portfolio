@@ -5,10 +5,24 @@ import './Experience.scss';
 
 const experiences = [
   {
+    company: 'Ablespace',
+    location: 'Delhi, India',
+    role: 'Full Stack Developer',
+    dates: 'Jul 2024 – Present',
+    skills: ['Next.js', 'Nest.js', 'Node', 'React', 'PostgreSQL', 'AWS'],
+    contributions: [
+      'Developing HIPAA and FERPA-compliant web applications and management platform serving 10,000+ professionals across school districts',
+      'Building scalable web modules for IEP goal tracking, service time logging, progress reporting, and Medicaid billing functionality using modern web technologies',
+      'Implementing AI-powered web features for automated goal creation, note generation, and educational assessments',
+      'Contributing to responsive web development with Next.js and NestJS backend architecture',
+      'Collaborating with product engineering team using GitHub Actions for CI/CD pipelines and automated deployments'
+    ]
+  },
+  {
     company: 'Newzenalpha Tech Pvt. Ltd',
     location: 'Bangalore, India',
     role: 'Software Developer',
-    dates: 'Dec 2024 – Present',
+    dates: 'Dec 2024 – Jul 2025',
     skills: ['Shopify', 'Node', 'React', 'PostgreSQL', 'AWS'],
     contributions: [
       'Contributed to the development and optimization of scalable software solutions.',
