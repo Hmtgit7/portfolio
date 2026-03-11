@@ -35,7 +35,7 @@ const About1 = () => {
         Mean/Mern Stack Developer , Java Full Stack Developer
         </p>
         
-        <a href="https://drive.google.com/file/d/1QWfi6aRyP4ZdL6Q6BMiGyUO9SYUb0gFj/view?usp=sharing" target='_blank'><button className='p-text'>Download CV</button></a>
+        <a href="https://drive.google.com/file/d/1Mf-5vtQ1sB6AZTbvtA84pXJdpIa9kOYI/view?usp=sharing" target='_blank'><button className='p-text'>Download CV</button></a>
       </div>
 
     </div>
