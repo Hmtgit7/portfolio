@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import './Skills.scss';
 import { AppWrap, MotionWrap } from '../../Wrapper';
@@ -74,30 +74,52 @@ const skillGroups = [
 ];
 
 const Skills = () => {
+  const [activeGroupTitle, setActiveGroupTitle] = useState(skillGroups[0].title);
+
+  const activeGroup = useMemo(
+    () => skillGroups.find((group) => group.title === activeGroupTitle) || skillGroups[0],
+    [activeGroupTitle]
+  );
+
   return (
     <section className="app__skills">
       <h2 className="head-text">Skills</h2>
-      <div className="app__skills-groups-grid">
-        {skillGroups.map((group) => (
-          <motion.div
-            className="app__skills-group-card"
-            key={group.title}
-            whileInView={{ opacity: [0, 1], scale: [0.97, 1] }}
-            transition={{ duration: 0.4 }}
-          >
-            <h3 className="app__skills-group-title-grid">{group.title}</h3>
-            <div className="app__skills-list-grid">
-              {group.skills.map((skill) => (
-                <div className="app__skills-item-grid app__flex" key={skill.name}>
-                  <div className="app__flex app__skills-icon-bg-grid">
-                    <img src={skill.icon} alt={skill.name} />
-                  </div>
-                  <p className="p-text">{skill.name}</p>
+
+      <div className="app__skills-content">
+        <div className="app__skills-pills" role="tablist" aria-label="Skill categories">
+          {skillGroups.map((group) => (
+            <button
+              key={group.title}
+              className={`app__skills-pill ${activeGroupTitle === group.title ? 'app__skills-pill--active' : ''}`}
+              onClick={() => setActiveGroupTitle(group.title)}
+              type="button"
+              role="tab"
+              aria-selected={activeGroupTitle === group.title}
+            >
+              {group.title}
+            </button>
+          ))}
+        </div>
+
+        <motion.div
+          className="app__skills-group-card"
+          key={activeGroup.title}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25 }}
+        >
+          <h3 className="app__skills-group-title-grid">{activeGroup.title}</h3>
+          <div className="app__skills-list-grid" role="tabpanel">
+            {activeGroup.skills.map((skill) => (
+              <div className="app__skills-item-grid app__flex" key={`${activeGroup.title}-${skill.name}`}>
+                <div className="app__flex app__skills-icon-bg-grid">
+                  <img src={skill.icon} alt={skill.name} />
                 </div>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+                <p className="p-text">{skill.name}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
