@@ -6,16 +6,13 @@ const PageTransition = ({ children }) => {
     // Page variants for transitions
     const pageVariants = {
         initial: {
-            opacity: 0,
-            y: 50
+            opacity: 0
         },
         in: {
-            opacity: 1,
-            y: 0
+            opacity: 1
         },
         out: {
-            opacity: 0,
-            y: -50
+            opacity: 0
         }
     };
 

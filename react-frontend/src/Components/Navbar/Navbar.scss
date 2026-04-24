@@ -1,16 +1,15 @@
 .navbar {
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  position: relative;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
   font-family: 'Poppins', sans-serif;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 
   &__logo {
     h1 {
@@ -93,6 +92,19 @@
       display: block;
     }
   }
+}
+
+.navbar--sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  animation: navbarSlideFade 0.28s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.navbar__spacer {
+  width: 100%;
 }
 
 // Overlay for mobile menu
@@ -196,5 +208,16 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes navbarSlideFade {
+  from {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

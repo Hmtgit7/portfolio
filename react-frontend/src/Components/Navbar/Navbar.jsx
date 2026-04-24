@@ -30,6 +30,37 @@ const SOCIAL_LINKS = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
+  const navRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const updateNavHeight = () => {
+      if (navRef.current) {
+        setNavHeight(navRef.current.offsetHeight);
+      }
+    };
+
+    updateNavHeight();
+    window.addEventListener("resize", updateNavHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateNavHeight);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 10);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Prevent background scroll when menu is open
   React.useEffect(() => {
@@ -44,7 +75,9 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <nav className="navbar">
+    <>
+      {isSticky && <div className="navbar__spacer" style={{ height: navHeight }} aria-hidden="true" />}
+      <nav ref={navRef} className={`navbar ${isSticky ? "navbar--sticky" : ""}`}>
       <div className="navbar__logo">
         <h1>{"</"}Hem<span>ant{" >"}</span></h1>
       </div>
@@ -107,7 +140,8 @@ const Navbar = () => {
           </aside>
         </>
       )}
-    </nav>
+      </nav>
+    </>
   );
 };
 
