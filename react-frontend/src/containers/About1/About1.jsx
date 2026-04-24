@@ -24,7 +24,7 @@ const About1 = () => {
   return (
     <div className="about">
       <div className="image">
-        <center><img src={images.Profile} alt="" /></center>
+        <img src={images.Profile} alt="Hemant Gehlod profile" />
       </div>
       <div className="content">
         <h1>Hello, I am {" "}
@@ -35,7 +35,7 @@ const About1 = () => {
         Mean/Mern Stack Developer , Java Full Stack Developer
         </p>
         
-        <a href="https://drive.google.com/file/d/1Mf-5vtQ1sB6AZTbvtA84pXJdpIa9kOYI/view?usp=sharing" target='_blank'><button className='p-text'>Download CV</button></a>
+        <a href="https://drive.google.com/file/d/1KLe_GJBWfkGLDlp6JkmAAR8cwnNMAXHB/view?usp=sharing" target='_blank'><button className='p-text'>Download CV</button></a>
       </div>
 
     </div>
