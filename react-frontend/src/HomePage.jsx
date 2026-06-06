@@ -1,12 +1,13 @@
 import React from 'react';
 import { Navbar, Footer } from './Components';
-import { About, Header, Skills, Work, Contact, Portfolio, Github, About1, Experience, Education, CombinedTimeline } from './containers';
+import { About, Header, Skills, Work, Contact, Portfolio, Github, About1, Experience, Education, CombinedTimeline, FeaturedProjects } from './containers';
 
 const HomePage = () => {
     return (
         <div className='app'>
             <Navbar />
             <Header />
+            <FeaturedProjects />
             <About />
             {/* <About1 /> */}
             <Portfolio />

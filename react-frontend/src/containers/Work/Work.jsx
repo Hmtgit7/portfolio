@@ -31,9 +31,9 @@ const Work = () => {
 
   return (
     <>
-      <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
+      <h2 className="head-text">My Creative <span>Portfolio</span></h2>
 
-      <h3 className="featured-projects-heading">Featured Projects</h3>
+      <h3 className="featured-projects-heading">Selected Projects</h3>
 
       <div className="app__work-filter">
         {[ 'React JS', 'MERN', 'Java', 'Next JS', 'Shopify App','Python'].map((item, index) => (

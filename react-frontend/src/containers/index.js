@@ -10,3 +10,4 @@ export {default as Github} from './GitHub/GitHub'
 export {default as Education} from './Education/Education'
 export { default as Experience } from './Experience/Experience';
 export { default as CombinedTimeline } from './CombinedTimeline';
+export { default as FeaturedProjects } from './FeaturedProjects/FeaturedProjects';
