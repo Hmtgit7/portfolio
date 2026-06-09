@@ -393,3 +393,57 @@
     }
   }
 }
+
+// ─── Two action buttons per project card ─────────────────────────────────────
+.app__projects-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.proj-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.77rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  border: 1.5px solid transparent;
+  font-family: var(--font-base);
+
+  svg {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  &--live {
+    background: var(--secondary-color);
+    color: #fff;
+    border-color: var(--secondary-color);
+
+    &:hover {
+      background: #2430af;
+      box-shadow: 0 4px 14px rgba(49, 59, 172, 0.32);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--code {
+    background: transparent;
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+
+    &:hover {
+      background: var(--secondary-color);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { AiFillGithub } from 'react-icons/ai';
+import { HiExternalLink } from 'react-icons/hi';
 import { BsFillArrowLeftSquareFill, BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import projects from '../../constants/project';
-import Footer from '../../Components/Footer/Footer'
+import Footer from '../../Components/Footer/Footer';
 import './Projects.scss';
 
 const Projects = () => {
@@ -176,7 +177,7 @@ const Projects = () => {
                               transition={{ duration: 0.25 }}
                               className="app__flex"
                             >
-                              <AiFillEye />
+                              <HiExternalLink />
                             </motion.div>
                           </a>
                         )}
@@ -205,6 +206,22 @@ const Projects = () => {
                             <p className="p-text">{tag}</p>
                           </div>
                         ))}
+                      </div>
+
+                      {/* Two explicit action buttons */}
+                      <div className="app__projects-card-actions">
+                        {work.projectLink && (
+                          <a href={work.projectLink} target="_blank" rel="noopener noreferrer"
+                            className="proj-btn proj-btn--live">
+                            <HiExternalLink /><span>Visit Live</span>
+                          </a>
+                        )}
+                        {work.codeLink && (
+                          <a href={work.codeLink} target="_blank" rel="noopener noreferrer"
+                            className="proj-btn proj-btn--code">
+                            <AiFillGithub /><span>View Code</span>
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
