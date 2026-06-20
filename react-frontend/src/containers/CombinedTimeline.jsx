@@ -20,5 +20,5 @@ const CombinedTimeline = () => {
 export default AppWrap(
   MotionWrap(CombinedTimeline, 'combined-timeline'),
   'combined-timeline',
-  'app__whitebg'
+  'app__primarybg'
 ); 

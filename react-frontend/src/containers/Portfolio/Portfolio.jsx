@@ -269,5 +269,5 @@ const Portfolio = () => {
 export default AppWrap(
   MotionWrap(Portfolio, "app__portfolio"),
   "portfolio",
-  "app__primarybg"
+  "app__whitebg"
 );
