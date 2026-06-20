@@ -7,7 +7,6 @@ import Portfolio from './components/sections/Portfolio';
 import Work from './components/sections/Work';
 import Skills from './components/sections/Skills';
 import CombinedTimeline from './components/sections/CombinedTimeline';
-import GitHub from './components/sections/GitHub';
 import Contact from './components/sections/Contact';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -21,7 +20,6 @@ export default function Home() {
       <CombinedTimeline />
       <Work />
       <Skills />
-      <GitHub />
       <Contact />
       <Footer />
       <ScrollToTop />

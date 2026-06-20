@@ -3,7 +3,6 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { errorHandler } from './utils/errorHandler';
-import githubRoutes from './routes/githubRoutes';
 import contactRoutes from './routes/contactRoutes';
 
 // Load environment variables
@@ -18,7 +17,6 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/github', githubRoutes);
 app.use('/api/contact', contactRoutes);
 
 // Health check endpoint

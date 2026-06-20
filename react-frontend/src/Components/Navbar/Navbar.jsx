@@ -6,7 +6,17 @@ import {
   BsYoutube,
   BsLinkedin,
 } from "react-icons/bs";
+import { HiMenuAlt4, HiX } from "react-icons/hi";
 import "./Navbar.scss";
+
+const NAV_LINKS = [
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Timeline", href: "/#combined-timeline" },
+  { label: "Work", href: "/#work" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Contact", href: "/#contact" },
+];
 
 const SOCIAL_LINKS = [
   { href: "https://github.com/Hmtgit7",                                                           icon: <BsGithub    aria-label="GitHub"    /> },
@@ -19,6 +29,7 @@ const SOCIAL_LINKS = [
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [navHeight, setNavHeight] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -37,6 +48,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  React.useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <>
       {isSticky && (
@@ -48,7 +70,16 @@ const Navbar = () => {
           <h1>{"</"}Hem<span>ant{" >"}</span></h1>
         </div>
 
-        {/* Social icons only */}
+        {/* Desktop Links */}
+        <ul className="navbar__links">
+          {NAV_LINKS.map((item) => (
+            <li key={item.href}>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Social icons */}
         <div className="navbar__social">
           {SOCIAL_LINKS.map((item, idx) => (
             <a href={item.href} key={idx} target="_blank" rel="noopener noreferrer">
@@ -56,6 +87,55 @@ const Navbar = () => {
             </a>
           ))}
         </div>
+
+        {/* Hamburger Menu button */}
+        <button
+          className="navbar__menu-btn"
+          aria-label="Open menu"
+          onClick={() => setMenuOpen(true)}
+        >
+          <HiMenuAlt4 />
+        </button>
+
+        {/* Mobile Menu Drawer Overlay */}
+        {menuOpen && (
+          <>
+            <div
+              className="navbar__overlay"
+              onClick={() => setMenuOpen(false)}
+              tabIndex={-1}
+              aria-label="Close menu overlay"
+            />
+            <aside className="navbar__mobile-menu" aria-modal="true" role="dialog">
+              <button
+                className="navbar__close-btn"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+              >
+                <HiX />
+              </button>
+              <ul>
+                {NAV_LINKS.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="navbar__mobile-social">
+                {SOCIAL_LINKS.map((item, idx) => (
+                  <a href={item.href} key={idx} target="_blank" rel="noopener noreferrer">
+                    <div>{item.icon}</div>
+                  </a>
+                ))}
+              </div>
+            </aside>
+          </>
+        )}
       </nav>
     </>
   );
