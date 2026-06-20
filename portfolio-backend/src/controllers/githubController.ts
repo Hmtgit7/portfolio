@@ -4,14 +4,25 @@ import axios from 'axios';
 import { asyncHandler } from '../utils/errorHandler';
 import { GitHubProfile, GitHubRepo, GitHubStats } from '../types';
 
-// Helper function to build headers safely
-const getGitHubHeaders = () => {
-    const headers: Record<string, string> = {};
+// Helper function to safely execute requests to GitHub API
+const githubGet = async (url: string, params?: any) => {
     const token = process.env.GITHUB_TOKEN;
+    const headers: Record<string, string> = {};
     if (token && token !== 'undefined' && token !== 'null' && token.trim() !== '') {
         headers['Authorization'] = `token ${token}`;
     }
-    return headers;
+    
+    try {
+        return await axios.get(url, { params, headers });
+    } catch (error: any) {
+        // If the request fails with 401 (Unauthorized) or 403 (Forbidden) and a token was supplied,
+        // retry the request without any token to fall back to unauthenticated public API access.
+        if (headers['Authorization'] && error.response && (error.response.status === 401 || error.response.status === 403)) {
+            console.warn(`GitHub API request to ${url} failed with status ${error.response.status} using token. Retrying without token...`);
+            return await axios.get(url, { params });
+        }
+        throw error;
+    }
 };
 
 // @desc    Get GitHub profile
@@ -20,9 +31,7 @@ const getGitHubHeaders = () => {
 export const getGitHubProfile = asyncHandler(async (req: Request, res: Response) => {
     const { username } = req.params;
 
-    const response = await axios.get(`https://api.github.com/users/${username}`, {
-        headers: getGitHubHeaders(),
-    });
+    const response = await githubGet(`https://api.github.com/users/${username}`);
 
     res.json(response.data);
 });
@@ -35,12 +44,9 @@ export const getGitHubRepos = asyncHandler(async (req: Request, res: Response) =
     const perPage = req.query.per_page || 10;
     const sort = req.query.sort || 'updated';
 
-    const response = await axios.get(`https://api.github.com/users/${username}/repos`, {
-        params: {
-            per_page: perPage,
-            sort: sort,
-        },
-        headers: getGitHubHeaders(),
+    const response = await githubGet(`https://api.github.com/users/${username}/repos`, {
+        per_page: perPage,
+        sort: sort,
     });
 
     res.json(response.data);
@@ -53,11 +59,8 @@ export const getGitHubStats = asyncHandler(async (req: Request, res: Response) =
     const { username } = req.params;
 
     // Fetch all repositories to calculate stats
-    const response = await axios.get(`https://api.github.com/users/${username}/repos`, {
-        params: {
-            per_page: 100,
-        },
-        headers: getGitHubHeaders(),
+    const response = await githubGet(`https://api.github.com/users/${username}/repos`, {
+        per_page: 100,
     });
 
     const repos = response.data;
