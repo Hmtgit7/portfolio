@@ -1,7 +1,6 @@
 // src/controllers/contactController.ts
 import { Request, Response } from 'express';
 import { asyncHandler } from '../utils/errorHandler';
-import Contact from '../models/Contact';
 import { sendEmail } from '../config/email';
 import { ContactRequest } from '../types';
 
@@ -10,14 +9,6 @@ import { ContactRequest } from '../types';
 // @access  Public
 export const submitContactForm = asyncHandler(async (req: Request, res: Response) => {
     const { name, email, subject, message } = req.body as ContactRequest;
-
-    // Create contact in database
-    const contact = await Contact.create({
-        name,
-        email,
-        subject: subject || 'Portfolio Contact Form',
-        message,
-    });
 
     // Send email notification
     await sendEmail({
@@ -47,7 +38,13 @@ export const submitContactForm = asyncHandler(async (req: Request, res: Response
 
     res.status(201).json({
         success: true,
-        data: contact,
+        data: {
+            name,
+            email,
+            subject: subject || 'Portfolio Contact Form',
+            message,
+            createdAt: new Date(),
+        },
         message: 'Contact form submitted successfully',
     });
 });
@@ -56,11 +53,9 @@ export const submitContactForm = asyncHandler(async (req: Request, res: Response
 // @route   GET /api/contact
 // @access  Private (should be protected in production)
 export const getContactSubmissions = asyncHandler(async (req: Request, res: Response) => {
-    const contacts = await Contact.find().sort({ createdAt: -1 });
-
     res.json({
         success: true,
-        count: contacts.length,
-        data: contacts,
+        count: 0,
+        data: [],
     });
 });

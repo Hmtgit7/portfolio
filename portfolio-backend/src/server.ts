@@ -2,16 +2,12 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDB from './config/db';
 import { errorHandler } from './utils/errorHandler';
 import githubRoutes from './routes/githubRoutes';
 import contactRoutes from './routes/contactRoutes';
 
 // Load environment variables
 dotenv.config();
-
-// Connect to MongoDB
-connectDB();
 
 // Initialize Express app
 const app = express();
