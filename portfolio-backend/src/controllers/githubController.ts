@@ -4,6 +4,16 @@ import axios from 'axios';
 import { asyncHandler } from '../utils/errorHandler';
 import { GitHubProfile, GitHubRepo, GitHubStats } from '../types';
 
+// Helper function to build headers safely
+const getGitHubHeaders = () => {
+    const headers: Record<string, string> = {};
+    const token = process.env.GITHUB_TOKEN;
+    if (token && token !== 'undefined' && token !== 'null' && token.trim() !== '') {
+        headers['Authorization'] = `token ${token}`;
+    }
+    return headers;
+};
+
 // @desc    Get GitHub profile
 // @route   GET /api/github/profile/:username
 // @access  Public
@@ -11,9 +21,7 @@ export const getGitHubProfile = asyncHandler(async (req: Request, res: Response)
     const { username } = req.params;
 
     const response = await axios.get(`https://api.github.com/users/${username}`, {
-        headers: {
-            Authorization: process.env.GITHUB_TOKEN ? `token ${process.env.GITHUB_TOKEN}` : '',
-        },
+        headers: getGitHubHeaders(),
     });
 
     res.json(response.data);
@@ -32,9 +40,7 @@ export const getGitHubRepos = asyncHandler(async (req: Request, res: Response) =
             per_page: perPage,
             sort: sort,
         },
-        headers: {
-            Authorization: process.env.GITHUB_TOKEN ? `token ${process.env.GITHUB_TOKEN}` : '',
-        },
+        headers: getGitHubHeaders(),
     });
 
     res.json(response.data);
@@ -51,9 +57,7 @@ export const getGitHubStats = asyncHandler(async (req: Request, res: Response) =
         params: {
             per_page: 100,
         },
-        headers: {
-            Authorization: process.env.GITHUB_TOKEN ? `token ${process.env.GITHUB_TOKEN}` : '',
-        },
+        headers: getGitHubHeaders(),
     });
 
     const repos = response.data;

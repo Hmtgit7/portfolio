@@ -2,20 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import AppWrap from "../../lib/AppWrap";
-import MotionWrap from "../../lib/MotionWrap";
 import { images } from "../../lib/constants";
 import "../styles/Header.scss";
-
-const scaleVariants = {
-  whileInView: {
-    scale: [0, 1],
-    opacity: [0, 1],
-    transition: {
-      duration: 1,
-      ease: "easeInOut",
-    },
-  },
-};
 
 const Header = () => (
   <div className="app__header app__flex">
@@ -65,23 +53,6 @@ const Header = () => (
         alt="profile_circle"
         className="overlay_circle"
       />
-    </motion.div>
-
-    <motion.div
-      variants={scaleVariants}
-      whileInView={scaleVariants.whileInView}
-      className="app__header-circles"
-    >
-      {[images.react, images.redux, images.sass].map((circle, index) => (
-        <motion.div
-          variants={scaleVariants}
-          whileInView={scaleVariants.whileInView}
-          className="circle-cmp app__flex"
-          key={`circle-${index}`}
-        >
-          <img src={circle} alt="tech_circle" />
-        </motion.div>
-      ))}
     </motion.div>
   </div>
 );

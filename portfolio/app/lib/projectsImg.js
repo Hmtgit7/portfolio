@@ -13,6 +13,8 @@ const projectsImg = {
   spotify: '/assets/projects/spotify.png',
   healthTracker: '/assets/projects/health-tracker.png',
   bookmarkManager: '/assets/projects/smart-bookmark.png',
+  hirelyx: '/assets/projects/hirelyx.png',
+  prajna: '/assets/projects/prajna.png',
 };
 
 export default projectsImg;
