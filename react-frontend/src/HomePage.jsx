@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Footer } from './Components';
-import { About, Header, Skills, Work, Contact, Portfolio, About1, Experience, Education, CombinedTimeline, FeaturedProjects } from './containers';
+import { About, Header, Skills, Work, Contact, Portfolio, CombinedTimeline, FeaturedProjects } from './containers';
 
 const HomePage = () => {
     return (

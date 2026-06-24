@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 
-import { AppWrap, MotionWrap } from '../../Wrapper';
 import './About1.scss'
 import { images } from '../../constants';
 import { useTypewriter, Cursor } from 'react-simple-typewriter'
-import { Link } from 'react-router-dom';
 
 const About1 = () => {
 
@@ -35,7 +32,7 @@ const About1 = () => {
         Mean/Mern Stack Developer , Java Full Stack Developer
         </p>
         
-        <a href="https://drive.google.com/file/d/1BXEYnOjuZAIBEacxZVJwzMFUm7Tz0QNS/view?usp=sharing" target='_blank'><button className='p-text'>Download CV</button></a>
+        <a href="https://drive.google.com/file/d/1BXEYnOjuZAIBEacxZVJwzMFUm7Tz0QNS/view?usp=sharing" target='_blank' rel="noreferrer"><button className='p-text'>Download CV</button></a>
       </div>
 
     </div>

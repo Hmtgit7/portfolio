@@ -9,11 +9,10 @@ import realtimeSpotify from "../assets/projects/spotify-clone.png";
 import threadsClone from "../assets/projects/threads-clone.png";
 import movieFlixer from "../assets/projects/movie-flixer.png";
 import homeNavPro from "../assets/projects/homeNavPro.png";
-import spotify from "../assets/projects/spotify.png";
 import healthTracker from "../assets/projects/health-tracker.png";
 import bookmarkManager from "../assets/projects/smart-bookmark.png";
 
-export default {
+const projectsImg = {
   periskope,
   tagmaster,
   syncsphere,
@@ -28,3 +27,5 @@ export default {
   healthTracker,
   bookmarkManager
 };
+
+export default projectsImg;

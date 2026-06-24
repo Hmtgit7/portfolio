@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AppWrap } from '../../Wrapper';
 import './Experience.scss';
 
 const experiences = [

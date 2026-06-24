@@ -39,7 +39,7 @@ import spotify from "../assets/spotify.png";
 import Profile from "../assets/Hemant_Gehlod-removebg-preview.png";
 import headerImg from "../assets/Hemant_Gehlod-removebg-preview.png";
 
-export default {
+const images = {
   about01,
   about02,
   about03,
@@ -78,3 +78,5 @@ export default {
   Profile,
   headerImg,
 };
+
+export default images;
