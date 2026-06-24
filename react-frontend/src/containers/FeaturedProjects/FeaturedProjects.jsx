@@ -125,12 +125,6 @@ const FeaturedProjects = () => {
           <motion.article
             key={project.id}
             className="fp__card"
-            style={{
-              '--accent':      project.accentColor,
-              '--accent-glow': project.accentGlow,
-              '--grad-from':   project.gradientFrom,
-              '--grad-via':    project.gradientVia,
-            }}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: index * 0.12 }}
