@@ -11,10 +11,11 @@ export const submitContactForm = asyncHandler(async (req: Request, res: Response
     const { name, email, subject, message } = req.body as ContactRequest;
 
     // Send email notification
-    await sendEmail({
-        to: process.env.EMAIL_TO as string,
-        subject: `Portfolio Contact: ${subject || 'New Message'}`,
-        text: `
+    try {
+        await sendEmail({
+            to: process.env.EMAIL_TO as string,
+            subject: `Portfolio Contact: ${subject || 'New Message'}`,
+            text: `
       You have received a new message from your portfolio contact form.
       
       Name: ${name}
@@ -23,7 +24,7 @@ export const submitContactForm = asyncHandler(async (req: Request, res: Response
       Message:
       ${message}
     `,
-        html: `
+            html: `
       New Contact Form Submission
       You have received a new message from your portfolio contact form.
       Contact Details:
@@ -34,7 +35,10 @@ export const submitContactForm = asyncHandler(async (req: Request, res: Response
       Message:
       ${message}
     `,
-    });
+        });
+    } catch (emailError) {
+        console.error('Failed to send contact notification email:', emailError);
+    }
 
     res.status(201).json({
         success: true,
